@@ -71,4 +71,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-### integrated tailwind css for styling 
+### integrated tailwind css for styling
+### seting up routing
+# Features
+-sign in page
+ -form
+ -redirect to browse page
+-sign up page
+
+-Browse Page(only for login users)
+ -Movie list *n vertical scroll
+
+-Netflixgtp page
+  -serach bar for movie suggestions
+
+
