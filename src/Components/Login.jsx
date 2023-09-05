@@ -1,18 +1,26 @@
 import Header from "./Header";
-import { BG_URL} from "../utils/constants";
+import { BG_URL,user_API_URL} from "../utils/constants";
 import { useState ,useRef} from "react";
 import {validateLogin} from '../utils/validate'
+import { useNavigate } from "react-router-dom";
+import  axios  from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/Slices/UserSlice";
+
+
+
 const Login = () => {
+    const dispatch=useDispatch();
 const [readmore, setreadmore] = useState(false)
 //const [email, setemail] = useState("second")
 const email = useRef("");
 const password = useRef("");
 const [error, seterror] = useState("")
+const navigate = useNavigate();
 
-const login = (e)=>{
+const login = async(e)=>{
 e.preventDefault();
 const error =validateLogin(email.current.value,password.current.value);
-
 if(error !== null){
 seterror(error);
 console.log(error);
@@ -20,7 +28,21 @@ return;
 }
 else{
     seterror("");
-    console.log(password.current.value,email.current.value);
+   try {
+    const {data}=await axios.post(`${user_API_URL}/login`,{"email":`${email.current.value.toLowerCase()}`,"password":`${password.current.value}`})
+    if (data.code === 200) {
+        localStorage.setItem("token", data.token);
+        dispatch(addUser(data.user))
+        email.current.value ="";
+        password.current.value="";
+        navigate("/browse");
+    }
+    else{
+        seterror(data.error)
+    } 
+   } catch (error) {
+    seterror("Something Went Wrong")
+   }
 }
 }
 return (
@@ -31,7 +53,7 @@ return (
 
     </div>
     <form
-        className=" bg-black rounded-lg bg-opacity-80  shadow-md  px-16 mx-auto lg:right-0 lg:left-0 absolute   w-full md:w-1/3 p-12  h-auto  my-24 ">
+        className=" bg-black rounded-lg bg-opacity-80  shadow-md  px-16 mx-auto right-0 left-0 absolute   md:w-1/2 lg:w-1/3  w-11/12  p-12  h-auto  my-24 ">
 
         <h2 className=" m-1 font-bold text-3xl text-white">Sign In </h2>
         <br />
@@ -58,7 +80,7 @@ return (
                 <div>
                     <label className="block" htmlFor="remember">
                         <input className="ml-2 leading-tight" type="checkbox" id="remember" name="remember" />
-                        <span className="text-sm px-1  text-gray-400">Remember me</span>
+                        <span className=" text-xs lg:text-sm md:text-sm px-1  text-gray-400">Remember me</span>
                     </label>
                 </div>
                 <div>

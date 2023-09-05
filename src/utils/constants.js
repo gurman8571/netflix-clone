@@ -6,4 +6,12 @@
    
   export const user_API_URL="http://localhost:6500/api/users";
 
+  export const API_KEY='c3f3684ebefc070d74d35e989ebf4e6d'
 
+ export  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2YzNjg0ZWJlZmMwNzBkNzRkMzVlOTg5ZWJmNGU2ZCIsInN1YiI6IjY0ZjVlOTgzNzdkMjNiMDBjYjg4NDVlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4H2Ok0eAzw134mMPELT-l-mHtZ5_jibLvXIShmXq_ek'
+    }
+  };

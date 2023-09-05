@@ -73,6 +73,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### integrated tailwind css for styling
 ### seting up routing
+### setting up redux store 
+-npm install @reduxjs/toolkit
+-npm install react-redux
+-configuring store in utils
+-Provide the Redux Store to React
+-Create a Redux State Slice
+-Add Slice Reducers to the Store
 # Features
 -sign in page
  -form
