@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.bg-red-700{
+    background-color: #E50914;
+}
+
+
+  .paymentStepLogo {
+    background: url(https://assets.nflxext.com/ffe/siteui/acquisition/simplicity/Lock.png) no-repeat 50% 50%;
+    background-size: 60px;
+    height: 60px;
+}
